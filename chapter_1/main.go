@@ -2,14 +2,25 @@ package main
 
 import "fmt"
 
+var list []int
+
 func main() {
-	fmt.Println("Hello GoWorld Data structures and Algorithms")
+	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO")
+
+	//Max sum of subarray which is the maximum
+	list = []int{1, -1, -3, 2, -4, 5, -13, 8}
+	fmt.Println("Max sub array sum:", maxSubArraySum(list))
+
+	//Rotate elements in an array K number of times
+	list = []int{10, 20, 30, 40, 50, 60}
+	k := 3
+	fmt.Println("Rotate elements in K times:", rotateArray(list, k))
 
 	//Binary Search Exercise
-	list := []int{1, 2, 3, 4, 5, 6}
+	list = []int{1, 2, 3, 4, 5, 6}
 	v := 4
 	binarySearch := binarySearch(list, v)
-	fmt.Println(binarySearch)
+	fmt.Println("Binary Search Array:", binarySearch)
 
 	//Sequential Search Exercise
 	list = []int{3, 2, 1, 4, 6, 5}
@@ -17,13 +28,47 @@ func main() {
 	y := 7
 	sequentialSearch1 := sequentialSearch(list, v)
 	sequentialSearch2 := sequentialSearch(list, y)
-	fmt.Println(sequentialSearch1)
-	fmt.Println(sequentialSearch2)
+	fmt.Println("Sequential Search for value v in array:", sequentialSearch1)
+	fmt.Println("Sequential Search for value y in array:", sequentialSearch2)
 
 	//Sum of Array Exercise
 	list = []int{7, 2, 3, 4, 5}
 	sumArray := sumArray(list)
-	fmt.Println(sumArray)
+	fmt.Println("Sum of all items in an array:", sumArray)
+}
+
+func maxSubArraySum(list []int) int {
+	n := len(list)
+	maxSoFar := 0
+	maxEnding := 0
+	for i := 0; i < n; i++ {
+		maxEnding = maxEnding + list[i]
+		if maxEnding < 0 {
+			maxEnding = 0
+		}
+		if maxSoFar < maxEnding {
+			maxSoFar = maxEnding
+		}
+	}
+	return maxSoFar
+}
+
+func rotateArray(list []int, k int) []int {
+	n := len(list)
+	reverseArray(list, 0, k-1)
+	reverseArray(list, k, n-1)
+	reverseArray(list, 0, n-1)
+	return list
+}
+
+func reverseArray(list []int, start int, end int) {
+	i := start
+	j := end
+	for i < j {
+		list[i], list[j] = list[j], list[i]
+		i++
+		j--
+	}
 }
 
 func binarySearch(list []int, v int) bool {
