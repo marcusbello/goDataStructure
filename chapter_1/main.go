@@ -8,7 +8,7 @@ var k int
 var y int
 
 func main() {
-	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO\n")
+	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO")
 
 	//Factorial
 	v = 4
