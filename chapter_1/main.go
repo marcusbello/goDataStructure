@@ -3,9 +3,16 @@ package main
 import "fmt"
 
 var list []int
+var v int
+var k int
+var y int
 
 func main() {
-	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO")
+	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO\n")
+
+	//Factorial
+	v = 4
+	fmt.Println("4 factorial is:", factorial(v))
 
 	//Max sum of subarray which is the maximum
 	list = []int{1, -1, -3, 2, -4, 5, -13, 8}
@@ -13,19 +20,19 @@ func main() {
 
 	//Rotate elements in an array K number of times
 	list = []int{10, 20, 30, 40, 50, 60}
-	k := 3
+	k = 3
 	fmt.Println("Rotate elements in K times:", rotateArray(list, k))
 
 	//Binary Search Exercise
 	list = []int{1, 2, 3, 4, 5, 6}
-	v := 4
+	v = 4
 	binarySearch := binarySearch(list, v)
 	fmt.Println("Binary Search Array:", binarySearch)
 
 	//Sequential Search Exercise
 	list = []int{3, 2, 1, 4, 6, 5}
 	v = 4
-	y := 7
+	y = 7
 	sequentialSearch1 := sequentialSearch(list, v)
 	sequentialSearch2 := sequentialSearch(list, y)
 	fmt.Println("Sequential Search for value v in array:", sequentialSearch1)
@@ -35,6 +42,13 @@ func main() {
 	list = []int{7, 2, 3, 4, 5}
 	sumArray := sumArray(list)
 	fmt.Println("Sum of all items in an array:", sumArray)
+}
+
+func factorial(v int) int {
+	if v <= 1 {
+		return 1
+	}
+	return v * factorial(v-1)
 }
 
 func maxSubArraySum(list []int) int {
