@@ -6,9 +6,24 @@ var list []int
 var v int
 var k int
 var y int
+var m int
+var n int
 
 func main() {
 	fmt.Println("Hello GoWorld!\nData structures and Algorithms In GO")
+
+	//Fibonacci's Number using recursion, will visit later for proper implementation
+	v = 4
+	fmt.Println("Fibonacci number of", v, "is", fibonacci(v))
+
+	//GCD Greatest Common Divisor
+	m = 4
+	n = 3
+	fmt.Println("Greatest Common Divisor", GCD(m, n))
+
+	//Tower of Hanoi or Tower of Brahma Example
+	v = 3
+	towersOfHanoi(v)
 
 	//Factorial
 	v = 4
@@ -42,6 +57,41 @@ func main() {
 	list = []int{7, 2, 3, 4, 5}
 	sumArray := sumArray(list)
 	fmt.Println("Sum of all items in an array:", sumArray)
+}
+
+func fibonacci(i int) int {
+	if i <= 1 {
+		return i
+	}
+
+	return fibonacci(i-1) + fibonacci(i-2)
+}
+
+func GCD(m int, n int) int {
+	if m < n {
+		GCD(n, m)
+	}
+
+	if m%n == 0 {
+		return n
+	}
+
+	return GCD(m, m%n)
+}
+
+func towersOfHanoi(i int) {
+	fmt.Println("No of moves in the sequence")
+	tohUtil(i, "A", "C", "B")
+}
+
+func tohUtil(i int, from string, to string, temp string) {
+
+	if i < 1 {
+		return
+	}
+	tohUtil(i-1, from, temp, to)
+	fmt.Println("Move Disk", i, "from peg", from, "to peg", to)
+	tohUtil(i-1, temp, to, from)
 }
 
 func factorial(v int) int {
